@@ -14,8 +14,8 @@ class Server:
     Methods:
         dataset(): Returns the full dataset.
         indexed_dataset(): Returns the dataset indexed by row numbers.
-        get_hyper_index(index: int, page_size: int)
-        Returns deletion-resilient pagination metadata.
+        get_hyper_index(index: int = None, page_size: int = 10)
+        : Returns deletion-resilient pagination metadata.
     """
     DATA_FILE = "Popular_Baby_Names.csv"
 
@@ -51,13 +51,13 @@ class Server:
             }
         return self.__indexed_dataset
 
-    def get_hyper_index(self, index: int = 0, page_size: int = 10) -> Dict:
+    def get_hyper_index(self, index: int = None, page_size: int = 10) -> Dict:
         """
         Returns pagination metadata that is resilient to deletions.
 
         Args:
-            index (int): The starting index for the page.
-            page_size (int): The number of items per page.
+            index (int): The starting index for the page. Defaults to None.
+            page_size (int): The number of items per page. Defaults to 10.
 
         Returns:
             dict: A dictionary with the following keys:
